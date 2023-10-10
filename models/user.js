@@ -1,6 +1,5 @@
-// Require mongoose
+//Desc: User model
 const mongoose = require('mongoose');
-// Require Joi to validate user
 const Joi = require('joi');
 
 //----------------------------------------------------------

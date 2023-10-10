@@ -1,20 +1,12 @@
 // Desc: Main entry point for the application
-//require('dotenv').config({path: __dirname + '/.env'});
 require('dotenv').config();
-//requie express
 const express = require('express');
 const app = express();
-//require https
 const https = require('https');
-//require fs
 const fs = require('fs');
-//require helmet
 const helmet = require('helmet');
-//require cors
 const cors = require('cors');
-//require hsts
 const hsts = require('./middleware/hsts');
-//require mongoose
 const mongoose = require('mongoose');
 
 //set port

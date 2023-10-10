@@ -1,13 +1,8 @@
-// Initialize express router
-// Require express
+// Desc: User routes
 const router = require('express').Router();
-// Require post model in our routes module
 const {User, validateUser} = require('../models/user');
-// Require hashPassword function from utils/hash.js
 const {hashPassword} = require('../utils/hash');
-// Require auth middleware
 const auth = require('../middleware/auth');
-// Require rate limiter middleware
 const rateLimit = require("express-rate-limit");
 
 //-------------------------------------------------------------

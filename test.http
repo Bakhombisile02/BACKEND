@@ -1,3 +1,4 @@
+// Desc: This is a REST API for a social media app. It allows users to create posts, view posts, and delete posts. It also allows users to create accounts and authenticate themselves.
 //Create user
 POST https://localhost:3000/api/user HTTP/1.1
 Content-Type: application/json

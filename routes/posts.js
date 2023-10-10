@@ -1,8 +1,6 @@
-// Initialize express router
+// Desc: API routes for boards
 const router = require('express').Router();
-// Require auth middleware
 const auth = require('../middleware/auth');
-// Require board model in our routes module
 const { Board, validateBoard } = require('../models/board');
 
 //get all boards
