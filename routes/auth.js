@@ -10,6 +10,7 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 });
 
+//-------------------------------------------------------
 // Authenticate user with rate limiting
 router.post('/', limiter, async (req, res) => {
     try {

@@ -11,6 +11,7 @@ router.get('/', auth, async(req,res)=>{
     res.send(boards);
 });
 
+//-------------------------------------------------------------
 //create new board
 router.post('/', auth, async(req,res)=>{
     const {error} = validateBoard(req.body);
@@ -21,7 +22,7 @@ router.post('/', auth, async(req,res)=>{
     res.send(board);
 });
 
-
+//-------------------------------------------------------------
 //get a single board
 router.get('/:id', auth, async(req,res)=>{
     const board = await Board.findById(req.params.id);
@@ -29,6 +30,7 @@ router.get('/:id', auth, async(req,res)=>{
     res.status(404).send('The board with the given ID was not found');
 });
 
+//-------------------------------------------------------------
 //delete a single board
 router.delete('/:id', auth, async(req,res)=>{
     const result = await Board.deleteOne({_id:req.params.id});

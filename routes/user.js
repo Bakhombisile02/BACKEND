@@ -10,6 +10,7 @@ const auth = require('../middleware/auth');
 // Require rate limiter middleware
 const rateLimit = require("express-rate-limit");
 
+//-------------------------------------------------------------
 // Create a rate limiter object
 const limiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
@@ -17,6 +18,7 @@ const limiter = rateLimit({
   message: "Too many requests from this IP, please try again later"
 });
 
+//-------------------------------------------------------------
 //create user account with rate limiting
 router.post('/', limiter, async(req,res)=>{
     const {error} = validateUser(req.body);
@@ -39,6 +41,7 @@ try{
 res.sendStatus(201);
 });
 
+//-------------------------------------------------------------
 //get current user with rate limiting
 router.get('/', limiter, auth, async(req,res)=>{
 res.send({currentUser: req.user});

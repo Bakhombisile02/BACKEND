@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // Require Joi to validate user
 const Joi = require('joi');
 
+//-------------------------------------------------------------
 // Create post schema
 const boardSchema = new mongoose.Schema({
     title: String,
@@ -13,6 +14,7 @@ const boardSchema = new mongoose.Schema({
 // Create post model   
 const Board = mongoose.model('Board', boardSchema);
 
+//-------------------------------------------------------------
 // Validate post
 function validateBoard(board){
     const schema = Joi.object({

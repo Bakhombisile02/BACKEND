@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // Require Joi to validate user
 const Joi = require('joi');
 
+//----------------------------------------------------------
 // Create post schema
 const userSchema = new mongoose.Schema({
    username:{ type:String, required:true, minlength:3, maxlength:50},
@@ -14,6 +15,7 @@ const userSchema = new mongoose.Schema({
 // Create post model
 const User = mongoose.model('User', userSchema);
 
+//----------------------------------------------------------
 // Validate user
 function validateUser(user){
     const schema = Joi.object({

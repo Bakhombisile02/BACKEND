@@ -20,6 +20,7 @@ const mongoose = require('mongoose');
 //set port
 const port = 3000;
 
+//----------------------------------------------------
 //listen 
 const server = https.createServer(
         {
@@ -38,24 +39,26 @@ server.on('error', (error) => {
     console.error('Server error:',error);
 });
 
+//----------------------------------------------------
 //connect to mongodb
 mongoose
 .connect(process.env.MONGODB_URL)
 .then(()=>console.log('Connected to MongoDB...'));
 
+//----------------------------------------------------
 //Middleware
 app.use(helmet());
 app.use(cors({origin: 'https://localhost:3000', optionsSuccessStatus: 200}));
 app.use(express.json());
 app.use(hsts);
 
+//----------------------------------------------------
 //Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 app.use('/api/posts', require('./routes/posts'));
 
-
-
+//----------------------------------------------------
 // allow frontend to access the API
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
