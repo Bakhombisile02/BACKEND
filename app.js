@@ -8,10 +8,13 @@ const helmet = require('helmet');
 const cors = require('cors');
 const hsts = require('./middleware/hsts');
 const mongoose = require('mongoose');
+const morgan = require('morgan')
+const ExpressBrute = require('express-brute');
+
 
 //set port
 const port = 3000;
-
+ 
 //----------------------------------------------------
 //listen 
 const server = https.createServer(
@@ -40,7 +43,26 @@ mongoose
 //----------------------------------------------------
 //Middleware
 app.use(helmet());
-app.use(cors({origin: 'https://localhost:3000', optionsSuccessStatus: 200}));
+
+app.use(
+    helmet({
+        frameguard:{
+            action: 'deny'
+        },
+    })
+);
+
+app.use(morgan('combined'));
+const store = new ExpressBrute.MemoryStore(); // You can choose other stores too
+const bruteforce = new ExpressBrute(store, {
+ freeRetries: 100,
+ minWait: 5*60*1000, // 5 minutes
+ maxWait: 60*60*1000, // 1 hour
+ lifetime: 24*60*60, // 1 day
+});
+
+app.use(bruteforce.prevent);
+app.use(cors({origin: 'https://localhost:4200', optionsSuccessStatus: 200}));
 app.use(express.json());
 app.use(hsts);
 

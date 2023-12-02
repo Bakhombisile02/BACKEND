@@ -21,7 +21,7 @@ function validateUser(user){
         username: Joi.string().min(3).max(50).required(),
         firstName: Joi.string().max(50).required(),
         lastName: Joi.string().max(50).required(),
-        password: Joi.string().min(4).max(50).required(),
+        password: Joi.string().min(8).max(50).required(),
     });
     return schema.validate(user);
 }
